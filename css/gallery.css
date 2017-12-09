@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/* line 1, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 11, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox__zoomIcon, .modal-preview {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* line 19, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+main {
+  margin: auto;
+  padding: 0 0 80px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 1024px;
+  background-color: white;
+}
+
+/* line 28, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.gallery {
+  margin: auto;
+  width: 87.890625%;
+  height: auto;
+  padding: 0;
+}
+
+/* line 34, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.gallery__title {
+  font-family: "Pathway Gothic One";
+  text-transform: uppercase;
+  padding: 60px 0 20px 60px;
+}
+
+/* line 41, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox {
+  position: relative;
+  width: 288px;
+  height: 155px;
+  margin-bottom: 40px;
+}
+
+/* line 46, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox__thumb {
+  width: 100%;
+  height: auto;
+}
+
+/* line 50, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox__zoomIcon {
+  display: block;
+  opacity: 0;
+}
+
+/* line 55, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox__author {
+  font-family: sans-serif;
+  font-size: 0.7rem;
+}
+
+/* line 62, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox:hover .imageBox__thumb {
+  -webkit-filter: grayscale(1) brightness(0.7);
+  filter: grayscale(1) brightness(0.7);
+}
+
+/* line 67, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.imageBox__ref:hover > .imageBox__zoomIcon {
+  opacity: 1;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* line 73, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox {
+    width: 331.2px;
+    height: 178.25px;
+  }
+  /* line 76, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox--lastItem {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  /* line 83, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox {
+    width: 417.6px;
+    height: 224.75px;
+    overflow: hidden;
+  }
+  /* line 87, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox--prelastItem, .imageBox--lastItem {
+    display: none;
+  }
+  /* line 92, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .gallery {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  /* line 100, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox {
+    width: 460.8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  /* line 105, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .gallery {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+/* line 114, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* line 137, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.modal-img {
+  max-width: 100%;
+}
+
+/* line 141, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.modal-preview {
+  border: .1rem solid #666;
+  -webkit-box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
+  max-width: 1200px;
+  min-width: 80%;
+}
+
+/* line 150, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.modal-cancel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+/* line 157, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+.modal-overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* line 168, C:/Users/Виктор/Desktop/FE Core/Gallery-sass/scss/gallery.scss */
+  .imageBox {
+    background: url("https://image.ibb.co/muzqub/photo_prev_2x.jpg") no-repeat;
+  }
+}
+
+/*# sourceMappingURL=../css/gallery.map */

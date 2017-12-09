@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// -------- Declaring variables --------
+$imageBoxWidth: 288px;
+$imageBoxHeight: 155px;
+// -------- Placeholder selectors ----------
+%modal-frame-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+main {
+    margin: auto;
+    padding: 0 0 80px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 1024px;
+    background-color: white;
+}
+
+.gallery {
+    margin: auto;
+    width: 87.890625%;
+    height: auto;
+    padding: 0;
+    &__title {
+        font-family: "Pathway Gothic One";
+        text-transform: uppercase;
+        padding: 60px 0 20px 60px;
+    }
+}
+
+.imageBox {
+    position: relative;
+    width: $imageBoxWidth;
+    height: $imageBoxHeight;
+    margin-bottom: 40px;
+    &__thumb {
+        width: 100%;
+        height: auto;
+    }
+    &__zoomIcon {
+        @extend %modal-frame-overlay;
+        display: block;
+        opacity: 0;
+    }
+    &__author {
+        font-family: sans-serif;
+        font-size: 0.7rem;
+    }
+}
+
+// -------- Hover-Effect for the lens --------
+.imageBox:hover .imageBox__thumb {
+    -webkit-filter: grayscale(1) brightness(0.7);
+    filter: grayscale(1) brightness(0.7);
+}
+
+.imageBox__ref:hover>.imageBox__zoomIcon {
+    opacity: 1;
+}
+
+// -------- RESPONSIVE DESIGN --------
+@media screen and (min-width:768px) and (max-width:991px) {
+    .imageBox {
+        width: $imageBoxWidth*1.15;
+        height: $imageBoxHeight*1.15;
+        &--lastItem {
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:767px) {
+    .imageBox {
+        width: $imageBoxWidth*1.45;
+        height: $imageBoxHeight*1.45;
+        overflow: hidden;
+        &--prelastItem,
+        &--lastItem {
+            display: none;
+        }
+    }
+    .gallery {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .imageBox {
+        width: $imageBoxWidth*1.60;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    .gallery {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+}
+
+// -------- MODAL FRAME FOR PREVIEW PICTURE --------
+.modal {
+    &-overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, .8);
+        -webkit-transition: opacity 300ms ease-in-out;
+        transition: opacity 300ms ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        z-index: 1;
+    }
+    &-img {
+        max-width: 100%;
+    }
+    &-preview {
+        @extend %modal-frame-overlay;
+        border: .1rem solid #666;
+        -webkit-box-shadow: 0 0 3rem rgba(0, 0, 0, .5);
+        box-shadow: 0 0 3rem rgba(0, 0, 0, .5);
+        max-width: 1200px;
+        min-width: 80%;
+    }
+    &-cancel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: default;
+    }
+    &-overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+// -------- RETINA DISPLAYS --------
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    // Сугубо для домашней работы я все картинки заменяю на одну и ту же
+    .imageBox {
+        background: url("https://image.ibb.co/muzqub/photo_prev_2x.jpg") no-repeat;
+    }
+}
